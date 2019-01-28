@@ -366,3 +366,49 @@ Solving a System of Linear Equations
 
     print(solve((expr1, expr2), dict=True))
 
+
+    soln = solve((expr1, expr2), dict=True)
+    soln = soln[0]
+    print(expr1.subs({x:soln[x], y:soln[y]}))
+    #0
+    print(expr2.subs({x:soln[x], y:soln[y]}))
+    #0
+
+
+Plotting Using SymPy
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    from sympy.plotting import plot
+    from sympy import Symbol
+    x = Symbol('x')
+    #plot(2*x+3)
+
+    #plot((2*x + 3), (x, -5, 5))
+
+    #plot(2*x + 3, (x, -5, 5), title='A Line', xlabel='x', ylabel='2x+3')
+
+    p = plot(2*x + 3, (x, -5, 5), title='A Line', xlabel='x', ylabel='2x+3', show=False)
+    p.save('line.png')
+
+
+Plotting Expressions Input by the User
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+y = 2x + 3,
+
+
+.. code-block:: python
+
+    from sympy import Symbol,solve,sympify
+    expr = input('Enter an expression: ')
+    #Enter an expression: 2*x + 3*y - 6
+    expr = sympify(expr)
+    y = Symbol('y')
+    print(solve(expr, y))
+
+
+
+
+
