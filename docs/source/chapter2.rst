@@ -127,3 +127,219 @@ Adding a Title and Labels
     legend([2000, 2006, 2012])
 
     show()
+
+
+Customizing the Axes
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    from pylab import plot, show, axis
+
+    nyc_temp = [53.9, 56.3, 56.4, 53.4, 54.5, 55.8, 56.8, 55.0, 55.3, 54.0, 56.7, 56.4, 57.3]
+    plot(nyc_temp, marker='o')
+    print(axis())
+    axis(ymin=0)
+
+    show()
+
+Plotting Using pyplot
+~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    '''
+    Simple plot using pyplot
+    '''
+    import matplotlib.pyplot
+    def create_graph():
+        x_numbers = [1, 2, 3]
+        y_numbers = [2, 4, 6]
+        matplotlib.pyplot.plot(x_numbers, y_numbers)
+        matplotlib.pyplot.show()
+
+    if __name__ == '__main__':
+        create_graph()
+
+ Saving the Plots
+~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+
+    from pylab import plot, savefig
+    x = [1, 2, 3]
+    y = [2, 4, 6]
+    plot(x, y)
+    savefig('mygraph.png')
+
+    #savefig('C:\mygraph.png')
+
+
+Plotting with Formulas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Newton’s Law of Universal Gravitation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Newton’s law of universal gravitation
+
+
+
+.. image:: ./img/chapter2-3.png
+
+.. code-block:: python
+
+    '''
+    The relationship between gravitational force and
+    distance between two bodies
+    '''
+    import matplotlib.pyplot as plt
+    # Draw the graph
+    def draw_graph(x, y):
+        plt.plot(x, y, marker='o')
+        plt.xlabel('Distance in meters')
+        plt.ylabel('Gravitational force in newtons')
+        plt.title('Gravitational force and distance')
+        plt.show()
+
+    def generate_F_r():
+    # Generate values for r
+        r = range(100, 1001, 50)
+    # Empty list to store the calculated values of F
+        F = []
+    # Constant, G
+        G = 6.674*(10**-11)
+    # Two masses
+        m1 = 0.5
+        m2 = 1.5
+    # Calculate force and add it to the list, F
+        for dist in r:
+            force = G*(m1*m2)/(dist**2)
+            F.append(force)
+    # Call the draw_graph function
+        draw_graph(r, F)
+    if __name__=='__main__':
+        generate_F_r()
+
+.. image:: ./img/chapter2-4.png
+
+Projectile Motion
+~~~~~~~~~~~~~~~~~~
+
+.. image:: ./img/chapter2-5.png
+
+.. image:: ./img/chapter2-6.png
+
+.. image:: ./img/chapter2-7.png
+
+
+Generating Equally Spaced Floating Point Numbers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+
+    '''
+    Generate equally spaced floating point
+    numbers between two given values
+    '''
+    def frange(start, final, increment):
+        numbers = []
+        while start < final:
+            numbers.append(start)
+            start = start + increment
+            return numbers
+
+Drawing the Trajectory
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+
+    '''
+    Draw the trajectory of a body in projectile motion
+    '''
+    from matplotlib import pyplot as plt
+    import math
+    def draw_graph(x, y):
+        plt.plot(x, y)
+        plt.xlabel('x-coordinate')
+        plt.ylabel('y-coordinate')
+        plt.title('Projectile motion of a ball')
+    def frange(start, final, interval):
+        numbers = []
+        while start < final:
+            numbers.append(start)
+            start = start + interval
+            return numbers
+    def draw_trajectory(u, theta):
+        theta = math.radians(theta)
+        g = 9.8
+    # Time of flight
+        t_flight = 2*u*math.sin(theta)/g
+    # Find time intervals
+        intervals = frange(0, t_flight, 0.001)
+
+        # List of x and y coordinates
+        x = []
+        y = []
+        for t in intervals:
+            x.append(u*math.cos(theta)*t)
+            y.append(u*math.sin(theta)*t - 0.5*g*t*t)
+            draw_graph(x, y)
+    if __name__ == '__main__':
+        try:
+            u = float(input('Enter the initial velocity (m/s): '))
+            theta = float(input('Enter the angle of projection (degrees): '))
+        except ValueError:
+            print('You entered an invalid input')
+        else:
+            draw_trajectory(u, theta)
+            plt.show()
+
+Comparing the Trajectory at Different Initial Velocities
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    '''
+    Draw the trajectory of a body in projectile motion
+    '''
+    from matplotlib import pyplot as plt
+    import math
+    def draw_graph(x, y):
+        plt.plot(x, y)
+        plt.xlabel('x-coordinate')
+        plt.ylabel('y-coordinate')
+        plt.title('Projectile motion of a ball')
+    def frange(start, final, interval):
+        numbers = []
+        while start < final:
+            numbers.append(start)
+            start = start + interval
+            return numbers
+    def draw_trajectory(u, theta):
+        theta = math.radians(theta)
+        g = 9.8
+    # Time of flight
+        t_flight = 2*u*math.sin(theta)/g
+    # Find time intervals
+        intervals = frange(0, t_flight, 0.001)
+
+        # List of x and y coordinates
+        x = []
+        y = []
+        for t in intervals:
+            x.append(u*math.cos(theta)*t)
+            y.append(u*math.sin(theta)*t - 0.5*g*t*t)
+            draw_graph(x, y)
+    if __name__ == '__main__':
+        # List of three different initial velocities
+        u_list = [20, 40, 60]
+        theta = 45
+        for u in u_list:
+            draw_trajectory(u, theta)
+    # Add a legend and show the graph
+        plt.legend(['20', '40', '60'])
+        plt.show()
