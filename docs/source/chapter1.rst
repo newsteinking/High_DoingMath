@@ -2,432 +2,430 @@ chapter 1: Working with numbers
 =======================================
 
 
-1.1 The Interactive Interpreter
----------------------------------
+1.1 Basic Mathematical Operations
+-------------------------------------
 
-.
+... code-block:: python
 
-1.2 Algo....What?
--------------------
-
-Algorithm is just a fancy word for a procedure or recipe—a detailed
-description of how to do something
-
-
-1.3 Numbers and Expressions
------------------------------
-
-
-.. code-block:: python
-
-
-    >>> 10 // 3
+    >>> 1 + 2
     3
-    >>> 10 % 3
+    >>> 1 + 3.5
+    4.5
+    >>> -1 + 2.5
+    1.5
+    >>> 100 – 45
+    55
+    >>> -1.1 + 5
+    3.9
+
+    >>> 3 * 2
+    6
+    >>> 3.5 * 1.5
+    5.25
+
+    >>> 3 / 2
+    1.5
+    >>> 4 / 2
+    2.0
+
+    >>> 3 // 2
     1
-    >>> 9 // 3
-    3
-    >>> 9 % 3
-    0
-    >>> 2.75 % 0.5
-    0.25
-    >>> 10 % 3
-    1
-    >>> 10 % -3
+
+    >>> -3 // 2
     -2
-    >>> -10 % 3
-    2
-    >>> -10 % -3
-    -1
-    >>> 10 // 3
+
+    >>> 9 % 2
+    1
+
+    >>> 2 ** 2
+    4
+    >>> 2 ** 10
+    1024
+    >>> 1 ** 10
+    1
+
+    >>> 8 ** (1/3)
+    2.0
+
+    >>> 5 + 5 * 5
+    30
+    >>> (5 + 5) * 5
+    50
+
+1.2 Labels: Attaching Names to Numbers
+-------------------------------------
+
+
+... code-block:: python
+
+    >>> a = 3
+    >>> a + 1
+    4
+    >>> a = 5
+    >>> a + 1
+    6
+
+1.3 Different Kinds of Numbers
+-------------------------------------
+
+... code-block:: python
+
+    >>> type(3)
+    <class 'int'>
+    >>> type(3.5)
+    <class 'float'>
+    >>> type(3.0)
+    <class 'float'>
+
+    >>> int(3.8)
     3
-    >>> 10 // -3
-    -4
-    >>> -10 // 3
-    -4
-    >>> -10 // -3
+    >>> int(3.0)
     3
-    >>> 2 ** 3
-    8
-    >>> -3 ** 2
-    -9
-    >>> (-3) ** 2
-    9
 
-    >>> 0xAF
-    175
-    >>> 010
-    8
-    >>> 0b1011010010
-    722
-
-
-1.4 Variables
--------------------
-
->>> x = 3
-x를 변수라고 하고 x에 3을 할당한다고 한다.
-
-
-
-
-1.5 Statements
--------------------
-Statements
-expression
-
-
-
-1.6 Getting Input from the User
-----------------------------------
-
-사용자 입력을 요구할때 쓰인다.
-
-.. code-block:: python
-
-
-    >>> input("The meaning of life: ")
-    The meaning of life: 42
-    '42'
-
-
-1.7 Functions
--------------------
-exponentiation operator (**) to calculate powers
-다음과 같이 쓰인다.
-
-.. code-block:: python
-
-    >>> 2 ** 3
-    8
-    >>> pow(2, 3)
-    8
-
-    >>> abs(-10)
-    10
-    >>> 2 // 3
-    0
-    >>> round(2 / 3)
-    1.0
-
-
-
-1.8 Modules
--------------------
-math 모듈은 다양한 수식 계산 함수들이 있다.
-
-.. code-block:: python
-
-    >>> import math
-    >>> math.floor(32.9)
-    32
-the opposite of floor is ceil
-
-.. code-block:: python
-
-
-    >>> math.ceil(32.3)
-    33
-    >>> math.ceil(32)
-    32
-
-
-모듈 함수는 불필요하게 다 로딩할 필요가 없다.
-필요한 함수만 로딩해서 쓰는게 메모리 관리에 좋다.
-
-.. code-block:: python
-
-    >>> from math import sqrt
-    >>> sqrt(9)
+    >>> float(3)
     3.0
 
+1.4 Working with Fractions
+----------------------------
 
-The square root of a negative number is a so-called imaginary
-number, and numbers that are the sum of a real and an imaginary part are called complex
+... code-block:: python
 
+    u >>> from fractions import Fraction
+    v >>> f = Fraction(3, 4)
+    w >>> f
+    Fraction(3, 4)
 
-.. code-block:: python
+    >>> Fraction(3, 4) + 1 + 1.5
+    3.25
 
-    >>> import cmath
-    >>> cmath.sqrt(-1)
-    1j
+    >>> Fraction(3, 4) + 1 + Fraction(1/4)
+    Fraction(2, 1)
 
-.. code-block:: python
+1.5 Complex Numbers
+----------------------------
 
-    >>> (1 + 3j) * (9 + 4j)
-    (-3 + 31j)
+... code-block:: python
 
+    >>> a = 2 + 3j
+    >>> type(a)
+    <class 'complex'>
 
+    >>> a = complex(2, 3)
+    >>> a
+    (2 + 3j)
 
-1.9 Saving and Executing Your Programs
-------------------------------------------
+    >>> b = 3 + 3j
+    >>> a + b
+    (5 + 6j)
+    >>> a - b
+    (-1 + 0j)
 
-프린트 함수를 써서 간단한 텍스트를 표현해 보자.
+    >>> a * b
+    (-3 + 15j)
+    >>> a / b
+    (0.8333333333333334 + 0.16666666666666666j)
 
-test.py 로 저장하고
+    >>> z = 2 + 3j
+    >>> z.real
+    2.0
+    >>> z.imag
+    3.0
 
-.. code-block:: python
+    >>> z.conjugate()
+    (2 - 3j)
 
-    print("test")
-    print('test')
+    >>> (z.real ** 2 + z.imag ** 2) ** 0.5
+    3.605551275463989
 
-입력을 받아서 표현하는 코드를 짜보자
+    >>> abs(z)
+    3.605551275463989
 
-.. code-block:: python
 
-    name = input("What is your name? ")
-    print("Hello, " + name + "!")
+1.6 Getting User Input
+----------------------------
 
-다음은 turtle 모듈에 대해서 알아보자.
+... code-block:: python
 
-.. code-block:: python
 
+    u >>> a = input()
+    v 1
 
-    from turtle import *
-    import time
+    >>> a
+    w '1'
 
-    forward(100)
-    time.sleep(2)
-    left(120)
-    time.sleep(2)
-    forward(100)
-    time.sleep(2)
-    left(120)
-    time.sleep(2)
-    forward(100)
-    time.sleep(5)
+    >>> s1 = 'a string'
+    >>> s2 = "a string"
 
- 상기 코드들 실행하면 새로운 창이 뜨면서 그림을 그리게 된다.
+    >>> a = '1'
+    >>> int(a) + 1
+    2
+    >>> float(a) + 1
+    2.0
 
-Running Your Python Scripts from a Command Prompt
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    >>> int('2.0')
+    Traceback (most recent call last):
+    File "<pyshell#26>", line 1, in <module>
+    int('2.0')
+    ValueError: invalid literal for int() with base 10: '2.0'
 
-파이션 코드는 명령어로 다음과 같이 실행하면 된다.
+    >>> a = float(input())
+    3/4
+    Traceback (most recent call last):
+    File "<pyshell#25>", line 1, in <module>
+    a=float(input())
+    ValueError: could not convert string to float: '3/4'
 
-.. code-block:: python
+1.8 Handling Exceptions and Invalid Input
+---------------------------------------------
 
-    C:\>python hello.py
-    or UNIX:
-    $ python hello.py
+... code-block:: python
 
-파일을 실행할때는 파일을 실행권한으로 변경해야 한다.
+    >>> try:
+    a = float(input('Enter a number: '))
+    except ValueError:
+    print('You entered an invalid number')
 
-$ chmod a+x hello.py
-
-Comments
-~~~~~~~~~~~~~~~
-
-The hash sign (#) is a bit special in Python
-* eclipse 단축키 : Ctrl +/   toggle
-또는 아래처럼 쓴다.
-"""
-xxx
-xxx
-"""
-
-
-
-
-
-
-1.10 Strings
------------------
-
-
-Single-Quoted Strings and Escaping Quotes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: python
-
-    >>> "Hello, world!"
-    'Hello, world!'
-
-    >>> 'Hello, world!'
-    'Hello, world!'
-
-동일하지만 유용할때가 있다.
-
-.. code-block:: python
-
-    >>> "Let's go!"
-    "Let's go!"
-    >>> '"Hello, world!" she said'
-    '"Hello, world!" she said'
-
-아래 코드는 오류가 난다.
-
-.. code-block:: python
-
-    >>> 'Let's go!'
-    SyntaxError: invalid syntax
-
-
-이럴때 backslash character (\) 사용한다.
-
-.. code-block:: python
-
-    >>> 'Let\'s go!'
-    "Let's go!"
-
-Concatenating Strings
-~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: python
-
-
-    >>> x = "Hello, "
-    >>> y = "world!"
-    >>> x y
-    SyntaxError: invalid syntax
-
-    >>> "Hello, " + "world!"
-    'Hello, world!'
-    >>> x = "Hello, "
-    >>> y = "world!"
-    >>> x + y
-    'Hello, world!'
-    String
-
-String Representations, str and repr
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: python
-
-    >>> "Hello, world!"
-    'Hello, world!'
-    >>> print("Hello, world!")
-    Hello, world!
-
-    >>> "Hello,\nworld!"
-    'Hello,\nworld!'
-    >>> print("Hello,\nworld!")
-    Hello,
-    world!
-
-Values are converted to strings through two different mechanisms. You can access both mechanisms
-yourself, by using the functions str and repr.9 With str, you convert a value into a string in some reasonable
-fashion that will probably be understood by a user, for example, converting any special character codes
-to the corresponding characters, where possible. If you use repr, however, you will generally get a
-representation of the value as a legal Python expression
-
-.. code-block:: python
-
-    >>> print(repr("Hello,\nworld!"))
-    'Hello,\nworld!'
-    >>> print(str("Hello,\nworld!"))
-    Hello,
-    world!
-
-
-
-Long Strings, Raw Strings, and bytes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Long Strings
-~~~~~~~~~~~~~~
-
-.. code-block:: python
-
-    print('''This is a very long string. It continues here.
-    And it's not over yet. "Hello, world!"
-    Still here.''')
-
-일반 String도 \를 넣어서 만들수가 있다.
-
-.. code-block:: python
-
-    print("Hello, \ world!")
-
-    >>> 1 + 2 + \
-    4 + 5
-    12
-    >>> print \
-    ('Hello, world')
-    Hello, world
-
-Raw Strings
-~~~~~~~~~~~~~~
-
-.. code-block:: python
-
-    >>> print(r'C:\nowhere')
-    C:\nowhere
-    >>> print(r'C:\Program Files\fnord\foo\bar\baz\frozz\bozz')
-    C:\Program Files\fnord\foo\bar\baz\frozz\bozz
-
-
-Unicode, bytes, and bytearray
+    Enter a number: 3/4
+    u You entered an invalid number
+
+    >>> a = input('Input an integer: ')
+
+    >>> a = int(input())
+    1
+    >>> a + 1
+    2
+
+    >>> a = int(input())
+    1.0
+    Traceback (most recent call last):
+    File "<pyshell#42>", line 1, in <module>
+    a=int(input())
+    ValueError: invalid literal for int() with base 10: '1.0'
+
+    >>> 1.1.is_integer()
+    False
+
+    >>> 1.0.is_integer()
+    True
+
+1.9 Fractions and Complex Numbers as Input
+---------------------------------------------
+
+... code-block:: python
+
+    >>> a = Fraction(input('Enter a fraction: '))
+    Enter a fraction: 3/4
+    >>> a
+    Fraction(3, 4)
+
+    >>> a = Fraction(input('Enter a fraction: '))
+    Enter a fraction: 3/0
+    Traceback (most recent call last):
+    File "<pyshell#2>", line 1, in <module>
+    a = Fraction(input('Enter a fraction: '))
+    File "/usr/lib64/python3.3/fractions.py", line 167, in __new__
+    raise ZeroDivisionError('Fraction(%s, 0)' % numerator)
+    ZeroDivisionError: Fraction(3, 0)
+
+    >>> try:
+    a = Fraction(input('Enter a fraction: '))
+    except ZeroDivisionError:
+    print('Invalid fraction')
+    Enter a fraction: 3/0
+    Invalid fraction
+
+    >>> z = complex(input('Enter a complex number: '))
+    Enter a complex number: 2+3j
+    >>> z
+    (2+3j)
+
+    >>> z = complex(input('Enter a complex number: '))
+    Enter a complex number: 2 + 3j
+    Traceback (most recent call last):
+    File "<pyshell#43>", line 1, in <module>
+    z = complex(input('Enter a complex number: '))
+    ValueError: complex() arg is a malformed string
+
+
+1.10 Writing Programs That Do the Math for You
+--------------------------------------------------
+
+Calculating the Factors of an Integer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+... code-block:: python
+
+    >>> def is_factor(a, b):
+    if b % a == 0:
+    return True
+    else:
+    return False
+
+    >>> is_factor(4, 1024)
+    True
+
+    >>> for i in range(1, 4):
+    print(i)
+
+    >>> for i in range(5):
+    print(i)
+
+    >>> for i in range(1,10,2):
+    print(i)
+
+    '''
+    Find the factors of an integer
+    '''
+    def factors(b):
+    u for i in range(1, b+1):
+    if b % i == 0:
+    print(i)
+    if __name__ == '__main__':
+    b = input('Your Number Please: ')
+    b = float(b)
+    v if b > 0 and b.is_integer():
+    factors(int(b))
+    else:
+    print('Please enter a positive integer')
+
+    Your Number Please: 25
+    1
+    5
+    25
+
+    Your Number Please: 15.5
+    Please enter a positive integer
+
+
+Generating Multiplication Tables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+... code-block:: python
+
+
+    '''
+    enhanced_multi_table.py
+
+    Multiplication table printer: Enter the number and the number
+    of multiples to be printed
+    '''
+
+    def multi_table(a, n):
+        for i in range(1, n+1):
+            print('{0} x {1} = {2}'.format(a, i, a*i))
+
+    if __name__ == '__main__':
+        try:
+            a = float(input('Enter a number: '))
+            n = float(input('Enter the number of multiples: '))
+            if not n.is_integer() or n < 0:
+                print('The number of multiples should be a positive integer')
+            else:
+                multi_table(a, int(n))
+        except ValueError:
+            print('You entered an invalid input')
+
+Converting Units of Measurement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: python
+... code-block:: python
 
-    >>> "\u00C6"
-    'Æ'
-    >>> "\U0001F60A"
-    ''
-    >>> "This is a cat: \N{Cat}"
-    'This is a cat
+    '''
+    enhanced_unit_converter_exit_power.py
 
-unicode will update later
+    Unit converter:
+
+    Miles and Kilometers
+    Kilograms and Pounds
+    Celsius and Fahrenheit
+
+    '''
+
+    def print_menu():
+        print('1. Kilometers to Miles')
+        print('2. Miles to Kilometers')
+        print('3. Kilograms to Pounds')
+        print('4. Pounds to Kilograms')
+        print('5. Celsius to Fahrenheit')
+        print('6. Fahrenheit to Celsius')
+
+    def km_miles():
+        km = float(input('Enter distance in kilometers: '))
+        miles = km / 1.609
+
+        print('Distance in miles: {0}'.format(miles))
+
+    def miles_km():
+        miles = float(input('Enter distance in miles: '))
+        km = miles * 1.609
+
+        print('Distance in kilometers: {0}'.format(km))
+
+    def kg_pounds():
+        kg = float(input('Enter weight in kilograms: '))
+        pounds = kg * 2.205
+
+        print('Weight in pounds: {0}'.format(pounds))
+
+    def pounds_kg():
+        pounds = float(input('Enter weight in pounds: '))
+        kg = pounds / 2.205
+
+        print('Weight in kilograms: {0}'.format(kg))
+
+    def cel_fahren():
+        celsius = float(input('Enter temperature in celsius: '))
+        fahrenheit =  celsius* (9 / 5) + 32
+        print('Temperature in fahrenheit: {0}'.format(fahrenheit))
+
+    def fahren_cel():
+        fahrenheit = float(input('Enter temperature in fahrenheit: '))
+        celsius = (fahrenheit - 32)*(5/9)
+        print('Temperature in celsius: {0}'.format(celsius))
+
+    if __name__ == '__main__':
+        print_menu()
+
+        while True:
+            choice = input('Which conversion would you like to do? ')
+
+            if choice == '1':
+                km_miles()
+            if choice == '2':
+                miles_km()
+
+            if choice == '3':
+                kg_pounds()
+            if choice == '4':
+                pounds_kg()
+
+            if choice == '5':
+                cel_fahren()
+            if choice == '6':
+                fahren_cel()
+
+            answer = input('Do you want to exit? (y) for yes ')
+            if answer == 'y':
+                break
 
 
+Finding the Roots of a Quadratic Equation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+... code-block:: python
 
 
-1.11 A Quick Summary
------------------------
-
-Algorithms:
-~~~~~~~~~
-An algorithm is a recipe telling you exactly how to perform a task.
-When you program a computer, you are essentially describing an algorithm in
-a language the computer can understand, such as Python. Such a machinefriendly
-description is called a program, and it mainly consists of expressions and
-statements.
-
-Expressions:
-~~~~~~~~~~~~
-An expression is a part of a computer program that represents
-a value. For example, 2 + 2 is an expression, representing the value 4. Simple
-expressions are built from literal values (such as 2 or "Hello") by using operators
-(such as + or %) and functions (such as pow). More complicated expressions
-can be created by combining simpler expressions (e.g., (2 + 2) * (3 - 1)).
-Expressions may also contain variables.
-
-Variables:
-~~~~~~~~~~~
- A variable is a name that represents a value. New values may be assigned
-to variables through assignments such as x = 2. An assignment is a kind of statement.
-
-Statements:
-~~~~~~~~~~~~
-A statement is an instruction that tells the computer to do
-something. That may involve changing variables (through assignments), printing
-things to the screen (such as print("Hello, world!")), importing modules, or
-doing a host of other stuff.
-
-Functions:
-~~~~~~~~~~~~~
-Functions in Python work just like functions in mathematics: they
-may take some arguments, and they return a result. (They may actually do lots
-of interesting stuff before returning, as you will find out when you learn to write
-your own functions in Chapter 6.)
-
-Modules:
-~~~~~~~~~~~~~~
-Modules are extensions that can be imported into Python to extend its
-capabilities. For example, several useful mathematical functions are available in
-the math module.
-Programs: You have looked at the practicalities of writing, saving, and running
-Python programs.
-
-Strings:
-~~~~~~~~~~~
-Strings are really simple—they are just pieces of text, with characters
-represented as Unicode code points. And yet there is a lot to know about them.
-In this chapter, you’ve seen many ways to write them, and in Chapter 3 you learn
-many ways of using them.
-
-이 장에서 쓰인 새로운 함수들은 다음과 같다.
-
-.. image:: ./img/chapter1-1.png
-
+    '''
+    Quadratic equation root calculator
+    '''
+    def roots(a, b, c):
+        D = (b*b - 4*a*c)**0.5
+        x_1 = (-b + D)/(2*a)
+        x_2 = (-b - D)/(2*a)
+        print('x1: {0}'.format(x_1))
+        print('x2: {0}'.format(x_2))
+    if __name__ == '__main__':
+        a = input('Enter a: ')
+        b = input('Enter b: ')
+        c = input('Enter c: ')
+        roots(float(a), float(b), float(c))
