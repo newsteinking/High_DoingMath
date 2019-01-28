@@ -14,7 +14,7 @@ chapter 2: visualizing Data with Graphs
 아래는 Cartesian coordinate plane 을 나타낸다.
 
 
-.. image:: ./img/chapter2-1.png
+.. image:: ./img/chapter2-2.png
 
 Working with Lists and Tuples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
