@@ -1,6 +1,7 @@
 chapter 7: Sovling Calculs problems
 ==========================================
-이 장에서는 당신이 원하는 어떤 오브젝트를 만드는 것이다.
+이 장에서는 Python standard library 와 SymPy를 이용한 코딩을 해보자.
+
 
 
 

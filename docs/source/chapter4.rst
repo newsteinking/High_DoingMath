@@ -408,7 +408,43 @@ y = 2x + 3,
     y = Symbol('y')
     print(solve(expr, y))
 
+    '''
+    Plot the graph of an input expression
+    '''
+    from sympy import Symbol, sympify, solve
+    from sympy.plotting import plot
+    def plot_expression(expr):
+        y = Symbol('y')
+        solutions = solve(expr, y)
+        expr_y = solutions[0]
+        plot(expr_y)
+
+    if __name__=='__main__':
+        expr = input('Enter your expression in terms of x and y: ')
+        try:
+            expr = sympify(expr)
+        except SympifyError:
+            print('Invalid input')
+        else:
+            plot_expression(expr)
 
 
+Plotting Multiple Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    from sympy.plotting import plot
+    from sympy import Symbol
+    x = Symbol('x')
+    plot(2*x+3, 3*x+1)
+
+    from sympy.plotting import plot
+    from sympy import Symbol
+    x = Symbol('x')
+    p = plot(2*x+3, 3*x+1, legend=True, show=False)
+    p[0].line_color = 'b'
+    p[1].line_color = 'r'
+    p.show()
 
 
